@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">URLJump</string>
+    <string name="main_title">URLJump</string>
+    <string name="host_input">Host</string>
+    <string name="route_input">Route</string>
+    <string name="params_input">Parameters</string>
+    <string name="host_placeholder">protocol://randomApp</string>
+    <string name="route_placeholder">Path/To/Page</string>
+    <string name="start_button">Start</string>
+    <string name="key">Key</string>
+    <string name="value">Value</string>
+    <string name="url_invalid_toast">Host must not be empty</string>
+</resources>

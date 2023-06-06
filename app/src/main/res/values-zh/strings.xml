@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">URL跳转</string>
+    <string name="main_title">URL跳转</string>
+    <string name="host_input">地址</string>
+    <string name="route_input">路径</string>
+    <string name="params_input">参数</string>
+    <string name="host_placeholder">protocol://randomApp</string>
+    <string name="route_placeholder">Path/To/Page</string>
+    <string name="start_button">启动</string>
+    <string name="key">键</string>
+    <string name="value">值</string>
+    <string name="url_invalid_toast">地址不能为空</string>
+</resources>
