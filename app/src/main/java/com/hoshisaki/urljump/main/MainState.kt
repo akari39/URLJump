@@ -4,12 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.text.TextUtils
-import android.util.Log
 import android.widget.Toast
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.snapshots.SnapshotStateList
-import androidx.compose.runtime.toMutableStateList
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hoshisaki.urljump.R
@@ -85,12 +82,8 @@ class MainViewModel : ViewModel() {
         }
     }
 
-    private fun generateUri() {
-
-    }
-
     fun startIntent(context: Context) {
-        val url: String? = handleURL()
+        val url: String? = generateURL()
         if (url == null) {
             Toast.makeText(
                 context,
@@ -106,7 +99,7 @@ class MainViewModel : ViewModel() {
         context.startActivity(intent)
     }
 
-    private fun handleURL(): String? {
+    private fun generateURL(): String? {
         val urlBuffer = StringBuffer()
         val hostText = _uiState.value.hostText
         if (!TextUtils.isEmpty(hostText)) {
@@ -118,7 +111,21 @@ class MainViewModel : ViewModel() {
         if (!TextUtils.isEmpty(routeText)) {
             urlBuffer.append("/$routeText")
         }
-
+        val paramBuffer = StringBuffer()
+        for (param in _uiState.value.params) {
+            // if is first query param, add the '?' symbol
+            if (paramBuffer.isEmpty()) {
+                paramBuffer.append("?")
+            } else {
+                // else, add a connector '&'
+                paramBuffer.append('&')
+            }
+            paramBuffer
+                .append(param.key)
+                .append("=")
+                .append(param.value)
+        }
+        urlBuffer.append(paramBuffer)
         return urlBuffer.toString()
     }
 }
